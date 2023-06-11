@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Mokkenstorm Technology",
+    "parent": null,
+    "skills": [],
+    "roles": ["Founder", "Independent Software Consultant"]
+  },
+  {
+    "name": "Summa",
+    "parent": "Varias",
+    "roles": ["Software Architect"],
+    "skills": [
+      "Vue.js",
+      "Laravel",
+      "PHP",
+      "Typescript",
+      "Tailwind CSS",
+      "Programming Language Theory"
+    ]
+  },
+  {
+    "name": "Varias",
+    "parent": "Mokkenstorm Technology",
+    "skills": [],
+    "roles": [
+      "Chief Technology Officer",
+      "Co-Founder",
+      "Lead Developer",
+      "Software Architect"
+    ]
+  },
+  {
+    "name": "Rotterdam Partners",
+    "parent": "Varias",
+    "roles": ["Technical Product Owner"],
+    "skills": [
+      "Contentful CMS",
+      "Nest.js",
+      "Next.js",
+      "Project Management",
+      "Tailwind CSS",
+      "Typescript"
+    ]
+  },
+  {
+    "name": "Snowday",
+    "parent": "Varias",
+    "roles": ["Consultant"],
+    "skills": ["Contentful CMS", "Nest.js", "Next.js", "PostgreSQL"]
+  }
+]
