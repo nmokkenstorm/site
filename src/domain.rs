@@ -7,3 +7,8 @@ pub struct Project {
     pub skills: Vec<String>,
     pub parent: Option<String>,
 }
+
+#[derive(PartialEq, Deserialize)]
+pub struct BlogPost {
+    pub title: String,
+}

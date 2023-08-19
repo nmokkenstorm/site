@@ -1,21 +1,24 @@
 use yew::prelude::*;
 
-use crate::domain::Project;
+#[derive(Properties, PartialEq)]
+pub struct ListItem {
+    pub title: String,
+}
 
 #[derive(Properties, PartialEq)]
-pub struct ProjectListProps {
+pub struct ListProps {
     pub title: String,
-    pub items: Vec<Project>,
+    pub items: Vec<ListItem>,
 }
 
 #[function_component]
-pub fn ProjectList(ProjectListProps { title, items }: &ProjectListProps) -> Html {
+pub fn List(ListProps { title, items }: &ListProps) -> Html {
     let data: Html = items
         .iter()
-        .map(|project: &Project| -> Html {
+        .map(|item: &ListItem| -> Html {
             html! {
-                <li key={&*project.name}>
-                    {format!("{}", project.name)}
+                <li key={&*item.title}>
+                    {format!("{}", item.title)}
                 </li>
             }
         })
