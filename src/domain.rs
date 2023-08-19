@@ -1,4 +1,4 @@
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
 #[derive(PartialEq, Deserialize)]
 pub struct Project {
@@ -8,7 +8,7 @@ pub struct Project {
     pub parent: Option<String>,
 }
 
-#[derive(PartialEq, Deserialize)]
+#[derive(PartialEq, Deserialize, Serialize)]
 pub struct BlogPost {
     pub title: String,
 }

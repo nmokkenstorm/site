@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-#[derive(Properties, PartialEq)]
+#[derive(Properties, PartialEq, Clone)]
 pub struct ListItem {
     pub title: String,
 }

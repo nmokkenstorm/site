@@ -1,8 +1,10 @@
 use crate::domain::BlogPost;
+use contentful::{ContentfulClient, QueryBuilder};
+use serde::ser::StdError;
 
 pub async fn get_posts() -> Result<Vec<BlogPost>, Box<dyn StdError>> {
-    let space = env!("CONTENTFUL_SPACE_ID");
-    let token = env!("CONTENTFUL_DELIVERY_TOKEN");
+    let space = get_env("CONTENTFUL_SPACE_ID");
+    let token = get_env("CONTENTFUL_DELIVERY_TOKEN");
 
     let contentful_client = ContentfulClient::new(&token, &space);
 

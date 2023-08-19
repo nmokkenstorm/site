@@ -1,3 +1,4 @@
+use yew::platform::spawn_local;
 use yew::prelude::*;
 
 use crate::components::{List, ListItem};
@@ -14,12 +15,36 @@ impl From<&BlogPost> for ListItem {
 
 #[function_component]
 pub fn Blog() -> Html {
-    let posts = get_posts()
-        .iter()
-        .map(|post| -> ListItem { ListItem::from(post) })
-        .collect::<Vec<ListItem>>();
+    let state = use_state(|| vec![]);
+    let loading = use_state(|| true);
+
+    {
+        let state = state.clone();
+
+        use_effect_with_deps(
+            move |_| {
+                spawn_local(async move {
+                    match get_posts().await {
+                        Ok(posts) => {
+                            state.set(
+                                posts
+                                    .iter()
+                                    .map(|post| -> ListItem { ListItem::from(post) })
+                                    .collect::<Vec<ListItem>>(),
+                            );
+                        }
+                        Err(_) => {
+                            state.set(vec![]);
+                        }
+                    }
+                });
+                || ()
+            },
+            (),
+        );
+    }
 
     html! {
-      <List title="Blog Posts" items={posts} />
+      <List title="Blog Posts" items={(*state).clone()} />
     }
 }
