@@ -1,6 +1,6 @@
 use serde::Deserialize;
 
-#[derive(PartialEq,  Deserialize)]
+#[derive(PartialEq, Deserialize)]
 pub struct Project {
     pub name: String,
     pub roles: Vec<String>,
