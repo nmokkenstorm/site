@@ -1,15 +1,16 @@
 use crate::domain::BlogPost;
 
-pub fn get_posts() -> Vec<BlogPost> {
-    let mut data: Vec<BlogPost> = Vec::new();
+pub async fn get_posts() -> Result<Vec<BlogPost>, Box<dyn StdError>> {
+    let space = env!("CONTENTFUL_SPACE_ID");
+    let token = env!("CONTENTFUL_DELIVERY_TOKEN");
 
-    data.push(BlogPost {
-        title: "My first post".to_owned(),
-    });
+    let contentful_client = ContentfulClient::new(&token, &space);
 
-    data.push(BlogPost {
-        title: "My second post".to_owned(),
-    });
+    let builder = QueryBuilder::new().content_type_is("blogPost");
 
-    data
+    let posts = contentful_client
+        .get_entries::<BlogPost>(Some(builder))
+        .await;
+
+    posts
 }
