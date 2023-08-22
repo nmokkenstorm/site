@@ -16,7 +16,6 @@ impl From<&BlogPost> for ListItem {
 #[function_component]
 pub fn Blog() -> Html {
     let state = use_state(|| vec![]);
-    let loading = use_state(|| true);
 
     {
         let state = state.clone();

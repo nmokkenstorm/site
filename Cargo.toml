@@ -14,7 +14,7 @@ contentful = "0.7.7"
 wasm-bindgen-futures = "0.4.37"
 
 [build-dependencies]
-dotenv-build = "0.1"
+dotenv = "0.15.0"
 
 [dependencies.web-sys]
 version = "0.3"

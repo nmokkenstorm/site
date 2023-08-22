@@ -3,8 +3,8 @@ use contentful::{ContentfulClient, QueryBuilder};
 use serde::ser::StdError;
 
 pub async fn get_posts() -> Result<Vec<BlogPost>, Box<dyn StdError>> {
-    let space = get_env("CONTENTFUL_SPACE_ID");
-    let token = get_env("CONTENTFUL_DELIVERY_TOKEN");
+    let space = std::env!("CONTENTFUL_SPACE_ID");
+    let token = std::env!("CONTENTFUL_DELIVERY_TOKEN");
 
     let contentful_client = ContentfulClient::new(&token, &space);
 
